@@ -1,0 +1,2 @@
+ERROR: Unable to find part v in library Device. @ [/Users/ohadformanair/Desktop/ZF_workspace/feedback/run_txt.py:27=>/Users/ohadformanair/Desktop/ZF_workspace/feedback/<string>:12]
+An error occurred: Unable to find part v in library Device.
