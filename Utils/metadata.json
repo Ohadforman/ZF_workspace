@@ -10,7 +10,7 @@
   
   "USER_PROMPT_TEMPLATE" : [
     "Based on this description: '{description}', describe the functionality, ",
-    "generate SKiDL Python code, and list all components needed. Use ",
+    "generate SKiDL Python code that start with the lines-import os and os.environ['KICAD_SYMBOL_DIR'] = /Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/, and list all components needed. Use ",
     "'Functionality Description:', 'SKiDL Python Code:', and 'Components List:' as ",
     "markers for each section."]
   
