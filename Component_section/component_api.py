@@ -47,7 +47,7 @@ if __name__ == "__main__":
     api_key = get_api_key(api_key_path)
 
     data = fetch_part_data(
-        part_number='LM324N',
+        part_number='TM4C1230C3PM',
         api_key=api_key,
         country_code='IS',
         currencies=['ILS']  # currencies should be passed as a list
