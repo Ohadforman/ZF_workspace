@@ -15,7 +15,7 @@ r2.value = '500'
 # Connect the nets and resistors.
 vin += r1[1]
 gnd += r2[2]
-vout += r1[2], r2[1]  # Corrected the typo in the reference to the first resistor.
+vout += r1[2], r2[1]  # Corrected the reference from r11 to r1.
 
 # Output the netlist to a file.
 generate_netlist()

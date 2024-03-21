@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "/Users/ohadformanair/Desktop/ZF_workspace/feedback/close_loop_api.py")
-    (date "03/21/2024 11:05 AM")
+    (date "03/21/2024 06:11 PM")
     (tool "SKiDL (1.2.1)"))
   (components
     (comp (ref R1)
@@ -21,7 +21,7 @@
         (field (name F6) R_*)
         (field (name ki_fp_filters) R_*))
       (libsource (lib Device) (part R))
-      (sheetpath (names /top/831154381100956862) (tstamps /top/831154381100956862)))
+      (sheetpath (names /top/11372589128326119426) (tstamps /top/11372589128326119426)))
     (comp (ref R2)
       (value 500)
       (footprint Resistor_SMD:R_0805_2012Metric)
@@ -39,7 +39,7 @@
         (field (name F6) R_*)
         (field (name ki_fp_filters) R_*))
       (libsource (lib Device) (part R))
-      (sheetpath (names /top/5159475765078086866) (tstamps /top/5159475765078086866))))
+      (sheetpath (names /top/4786351906776283716) (tstamps /top/4786351906776283716))))
   (nets
     (net (code 1) (name GND)
       (node (ref R2) (pin 2)))
