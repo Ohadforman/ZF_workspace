@@ -122,34 +122,32 @@ class CorrectPy:
             return f"An error occurred: {e}"
 
 
-if __name__ == "__main__":
-    corpy = CorrectPy('openai_api_key.txt', '../Utils/config_correct.json')
-    script_path = '../order_files/MyProject_code.py'
-    expected_output = 'INFO: No errors or warnings found while generating netlist.'
-    output_path = 'script_execution_output.txt'
-    max_attempts = 2
-    attempt = 0
-    success = False
+    def attempt_correction(self, script_path: str, expected_output: str, output_path: str, max_attempts: int = 5) -> None:
+        """
+        Attempts to correct a Python script to match an expected output, within a maximum number of attempts.
 
-    while attempt < max_attempts and not success:
-        # Step 1: Run the Python script and get its output
-        output = corpy.run_python_script_and_get_combined_output(script_path)
+        :param script_path: Path to the Python script to correct.
+        :param expected_output: The expected output of the script, as a string.
+        :param output_path: Path where the script's output should be written.
+        :param max_attempts: Maximum number of correction attempts.
+        """
+        attempt = 0
+        success = False
 
-        # Step 3: Compare the output file with the expected output file
-        # print("output:", output.strip().split(), "expected:", expected_output.strip().split())
-        if output.strip().split() == expected_output.strip().split():
-            print("Success: The script's output matches the expected output.")
-            success = True
-            break
-        else:
-            print("The script's output does not match the expected output. Attempting correction...")
-            # Step 4: Read the script and build a correction prompt
-            script_text = corpy.read_script_to_string(script_path)
-            correction_prompt = corpy.build_correction_prompt(output, script_text)
-            # Step 5: Send the correction prompt and receive corrected code
-            corrected_code = corpy.send_prompt_for_correction(correction_prompt)
-            # Step 6: Write the corrected code back to the script file
-            corpy.write_text_to_file(corrected_code, script_path)
-            attempt += 1
-    if not success:
-        print(f"Failed to correct the script after {max_attempts} attempts.")
+        while attempt < max_attempts and not success:
+            output = self.run_python_script_and_get_combined_output(script_path)
+            self.write_text_to_file(output, output_path)
+
+            if output.strip().split() == expected_output.strip().split():
+                print("Success: The script's output matches the expected output.")
+                success = True
+            else:
+                print("Output does not match expected. Attempting correction...")
+                script_text = self.read_script_to_string(script_path)
+                correction_prompt = self.build_correction_prompt(output, script_text)
+                corrected_code = self.send_prompt_for_correction(correction_prompt)
+                self.write_text_to_file(corrected_code, script_path)
+                attempt += 1
+
+        if not success:
+            print(f"Failed to correct the script after {max_attempts} attempts.")
