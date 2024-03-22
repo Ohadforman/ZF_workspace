@@ -121,7 +121,7 @@ class CorrectPy:
         except Exception as e:
             return f"An error occurred: {e}"
 
-    def attempt_correction(self, script_path: str, expected_output: str, output_path: str,
+    def attempt_correction(self, script_path: str, expected_output: str,
                            max_attempts: int = 5) -> None:
         """
         Attempts to correct a Python script to match an expected output, within a maximum number of attempts.
@@ -136,7 +136,7 @@ class CorrectPy:
 
         while attempt < max_attempts and not success:
             output = self.run_python_script_and_get_combined_output(script_path)
-            self.write_text_to_file(output, output_path)
+
 
             if output.strip().split() == expected_output.strip().split():
                 print("Success: The script's output matches the expected output.")

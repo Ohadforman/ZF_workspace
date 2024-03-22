@@ -1,21 +1,11 @@
 import os
+os.environ['KISYSMOD'] = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/modules/'
 os.environ['KICAD_SYMBOL_DIR'] = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/'
 
 from skidl import *
 
-# Create input & output voltages and ground reference.
-vin, vout, gnd = Net('VI'), Net('VO'), Net('GND')
+led = Part('Device', 'LED', footprint='LED_3MM')
+led[1] += Net('BLINK')
+led[2] += Net('GND')
 
-# Create two resistors.
-r1 = Part('Device', 'R', footprint='Resistor_SMD:R_0805_2012Metric')
-r2 = Part('Device', 'R', footprint='Resistor_SMD:R_0805_2012Metric')
-r1.value = '1K'
-r2.value = '500'
-
-# Connect the nets and resistors.
-vin += r1[1]
-gnd += r2[2]
-vout += r1[2], r2[1]  # Corrected the reference from r11 to r1.
-
-# Output the netlist to a file.
 generate_netlist()
