@@ -1,0 +1,10 @@
+{
+  "api": {
+    "model": "gpt-3.5-turbo"
+  },
+  "correction_prompt": {
+    "introduction": "I have a piece of Python code that has some errors. Here's the code:\n\n",
+    "error_intro": "And here's the error message I'm getting:\n\n",
+    "correction_request": "Can you provide the corrected version of the code, give it full not parts? Please format the corrected code like this:\n\n```python\n# Corrected code starts\n<corrected_FULL_code>\n# Corrected code ends\n```"
+  }
+}

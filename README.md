@@ -2,7 +2,8 @@
 
 # Todo
 ## Backend Tasks
-
+- [ ] close loop on chat api feedback
+- [ ] make a log of the errors of the attempts 
 
 
 
